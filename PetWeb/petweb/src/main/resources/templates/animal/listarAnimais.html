@@ -1,0 +1,72 @@
+<!-- listarAnimais.html -->
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listagem de Animais</title>
+    <!-- Icone da pagina -->
+    <link rel="icon" type="image/png" th:href="@{/img/paginaicon.png}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+    <div class="container py-5">
+
+        <div class="card shadow-lg border-0 rounded-4">
+
+            <div class="card-header text-center text-white pet-header">
+                <h1 class="fw-bold mb-0">🐶 Animais</h1>
+            </div>
+
+            <div class="card-body">
+
+                <div class="d-flex justify-content-between mb-4">
+                    <a th:href="@{/animais/criar}" class="btn btn-green">+ Cadastrar Animal</a>
+                    <a th:href="@{/home}" class="btn btn-secondary">Voltar</a>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover align-middle">
+
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Nome</th>
+                                <th>Raça</th>
+                                <th>Porte</th>
+                                <th>Peso</th>
+                                <th>Tutor</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr th:each="animal : ${animais}">
+                                <td th:text="${animal.nomeAnimal}"></td>
+                                <td th:text="${animal.raca}"></td>
+                                <td th:text="${animal.porte}"></td>
+                                <td th:text="${animal.peso}"></td>
+                                <td th:text="${animal.cliente.nomeCliente}"></td>
+                                <td>
+                                    <a th:href="@{/animais/editar/{id}(id=${animal.idAnimal})}"
+                                        class="btn btn-sm btn-warning">Editar</a>
+                                    <a th:href="@{/animais/excluir/{id}(id=${animal.idAnimal})}"
+                                        class="btn btn-sm btn-danger">Excluir</a>
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
