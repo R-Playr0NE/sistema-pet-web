@@ -60,9 +60,94 @@
                         <input type="text" th:field="*{loginUsuario}" class="form-control">
                     </div>
 
+                    <!-- Campo da senha -->
                     <div class="mb-4">
+
                         <label class="form-label">Senha</label>
-                        <input type="password" th:field="*{senhaUsuario}" class="form-control">
+
+                        <!-- Input + botão visualizar -->
+                        <div class="input-group">
+
+                            <input type="password" th:field="*{senhaUsuario}" class="form-control" id="senhaUsuario"
+                                placeholder="Digite sua senha">
+
+                            <button class="btn btn-outline-secondary" type="button" id="toggleSenha">
+                                👁
+                            </button>
+
+                        </div>
+
+                        <!-- Barra de força -->
+                        <div class="progress mt-3" style="height: 8px;">
+                            <div id="barraForca" class="progress-bar" role="progressbar" style="width: 0%;">
+                            </div>
+                        </div>
+
+                        <!-- Texto da força -->
+                        <small id="textoForca" class="text-muted">
+                            Digite uma senha
+                        </small>
+
+                        <!-- Requisitos -->
+                        <div class="password-rules mt-3">
+
+                            <p class="mb-2 fw-semibold">
+                                Sua senha deve conter:
+                            </p>
+
+                            <ul class="list-unstyled small">
+
+                                <li id="regraTamanho">
+                                    ❌ Mínimo 8 caracteres
+                                </li>
+
+                                <li id="regraMaiuscula">
+                                    ❌ Letra maiúscula
+                                </li>
+
+                                <li id="regraMinuscula">
+                                    ❌ Letra minúscula
+                                </li>
+
+                                <li id="regraNumero">
+                                    ❌ Número
+                                </li>
+
+                                <li id="regraEspecial">
+                                    ❌ Caractere especial
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Confirmar senha -->
+                    <div class="mb-4">
+
+                        <label class="form-label">Confirmar senha</label>
+
+                        <div class="input-group">
+
+                            <input type="password" th:field="*{confirmarSenha}" class="form-control" id="confirmarSenha"
+                                placeholder="Confirme sua senha">
+
+                            <button class="btn btn-outline-secondary" type="button" id="toggleConfirmarSenha">
+                                👁
+                            </button>
+
+                        </div>
+
+                        <small id="textoConfirmacao" class="text-muted">
+                        </small>
+
+                    </div>
+
+                    <div th:if="${erro}" class="alert alert-danger">
+
+                        <span th:text="${erro}"></span>
+
                     </div>
 
                     <button type="submit" class="btn btn-lg btn-green w-100">
@@ -81,5 +166,8 @@
         </div>
     </div>
 
+    <script th:src="@{/js/senha-validator.js}"></script>
+
 </body>
+
 </html>

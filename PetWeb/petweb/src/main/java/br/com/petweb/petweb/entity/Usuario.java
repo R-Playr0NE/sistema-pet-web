@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,8 +18,9 @@ import lombok.Setter;
 @Setter
 @Getter
 public class Usuario {
-    
-    // passar as dependências mais comuns pra trabalhar com Spring Security + Crypto no pom.xml (Maven).
+
+    // passar as dependências mais comuns pra trabalhar com Spring Security + Crypto
+    // no pom.xml (Maven).
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -42,6 +44,9 @@ public class Usuario {
     @Column(nullable = false, length = 150)
     private String senhaUsuario;
 
-    private String role = "ROLE_USER"; //Papel do usuario
+    @Transient
+    private String confirmarSenha;
+
+    private String role = "ROLE_USER"; // Papel do usuario
 
 }

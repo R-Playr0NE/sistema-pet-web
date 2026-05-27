@@ -1,47 +1,97 @@
 /* style.css */
 
-body{
+body {
     background: linear-gradient(135deg, #667eea, #764ba2);
 }
 
-.pet-card{
+.pet-card {
     max-width: 550px;
     width: 100%;
 }
 
-.pet-header{
+.pet-header {
     background: linear-gradient(135deg, #ff6b9d, #4ecdc4);
     padding: 35px 20px;
 }
 
-.btn-pink{
+.btn-pink {
     background: #ff6b9d;
     color: white;
     border: none;
 }
 
-.btn-pink:hover{
+.btn-pink:hover {
     background: #e05586;
     color: white;
 }
 
-.btn-green{
+.btn-green {
     background: #4ecdc4;
     color: white;
     border: none;
 }
 
-.btn-green:hover{
+.btn-green:hover {
     background: #39b3aa;
     color: white;
 }
 
-.form-control{
+.form-control {
     border-radius: 10px;
     padding: 10px;
 }
 
-label{
+label {
     font-weight: 600;
     margin-bottom: 5px;
+}
+
+/* Barra de força da senha */
+.progress {
+    border-radius: 10px;
+    background: #e9ecef;
+}
+
+.progress-bar {
+    transition: all 0.3s ease;
+}
+
+/* Caixa dos requisitos */
+.password-rules{
+    background: rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 15px;
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+/* Lista */
+.password-rules ul{
+    margin: 0;
+    padding: 0;
+}
+
+.password-rules li{
+    padding: 4px 0;
+    transition: 0.3s;
+}
+
+/* Requisito válido */
+.regra-ok{
+    color: #198754;
+    font-weight: 600;
+}
+
+/* Requisito inválido */
+.regra-fail{
+    color: #dc3545;
+}
+
+/* Botão visualizar senha */
+.input-group .btn{
+    border-radius: 0 10px 10px 0;
+}
+
+/* Campo de senha */
+.input-group .form-control{
+    border-radius: 10px 0 0 10px;
 }

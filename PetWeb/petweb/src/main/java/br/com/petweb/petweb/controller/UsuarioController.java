@@ -18,15 +18,30 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioService usuarioService;
-    
+
     @PostMapping("/salvar")
-    public String salvar(@ModelAttribute Usuario usuario){
+public String salvar(@ModelAttribute Usuario usuario,
+                     Model model){
+
+    try {
+
         usuarioService.save(usuario);
+
         return "/login";
     }
 
+    catch (RuntimeException e) {
+
+        model.addAttribute("erro", e.getMessage());
+
+        model.addAttribute("usuario", usuario);
+
+        return "/usuario/formularioUsuario";
+    }
+}
+
     @GetMapping("/criar")
-    public String criarForm(Model model){
+    public String criarForm(Model model) {
         model.addAttribute("usuario", new Usuario());
         return "/usuario/formularioUsuario";
     }
