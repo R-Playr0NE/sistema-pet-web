@@ -16,37 +16,8 @@ public class UsuarioService {
     private PasswordEncoder passwordEncoder;
 
     public Usuario save(Usuario usuario) {
-
-        String senha = usuario.getSenhaUsuario();
-        String confirmarSenha = usuario.getConfirmarSenha();
-    
-        // Verifica confirmação
-        if (!senha.equals(confirmarSenha)) {
-    
-            throw new RuntimeException(
-                "As senhas não coincidem."
-            );
-        }
-    
-        // Regex melhorada
-        String regex =
-            "^(?=.*[a-z])" +      // minúscula
-            "(?=.*[A-Z])" +       // maiúscula
-            "(?=.*\\d)" +         // número
-            "(?=.*[^A-Za-z0-9])" + // especial
-            ".{8,}$";             // mínimo 8 caracteres
-    
-        if (!senha.matches(regex)) {
-    
-            throw new RuntimeException(
-                "A senha deve conter no mínimo 8 caracteres, letra maiúscula, minúscula, número e caractere especial."
-            );
-        }
-    
-        usuario.setSenhaUsuario(
-            passwordEncoder.encode(senha)
-        );
-    
+        // Criptografa a senha antes de salvar
+        usuario.setSenhaUsuario(passwordEncoder.encode(usuario.getSenhaUsuario()));
         return usuarioRepository.save(usuario);
     }
 

@@ -20,25 +20,10 @@ public class UsuarioController {
     private UsuarioService usuarioService;
 
     @PostMapping("/salvar")
-public String salvar(@ModelAttribute Usuario usuario,
-                     Model model){
-
-    try {
-
+    public String salvar(@ModelAttribute Usuario usuario) {
         usuarioService.save(usuario);
-
         return "/login";
     }
-
-    catch (RuntimeException e) {
-
-        model.addAttribute("erro", e.getMessage());
-
-        model.addAttribute("usuario", usuario);
-
-        return "/usuario/formularioUsuario";
-    }
-}
 
     @GetMapping("/criar")
     public String criarForm(Model model) {

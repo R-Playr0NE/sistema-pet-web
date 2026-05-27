@@ -228,7 +228,6 @@ form.addEventListener("submit", (e) => {
 
     const senha = senhaInput.value;
 
-    // Critérios obrigatórios
     const senhaValida =
         senha.length >= 8 &&
         /[A-Z]/.test(senha) &&
@@ -239,14 +238,31 @@ form.addEventListener("submit", (e) => {
     const confirmacaoValida =
         validarConfirmacao();
 
-    // Impede envio
-    if (!senhaValida || !confirmacaoValida) {
+    // Senha inválida
+    if (!senhaValida) {
 
         e.preventDefault();
 
         texto.textContent =
-            "Corrija os requisitos da senha";
+            "❌ A senha não atende os requisitos.";
 
-        texto.classList.add("text-danger");
+        texto.className =
+            "text-danger";
+
+        return;
+    }
+
+    // Confirmação inválida
+    if (!confirmacaoValida) {
+
+        e.preventDefault();
+
+        textoConfirmacao.textContent =
+            "❌ As senhas não coincidem";
+
+        textoConfirmacao.className =
+            "text-danger";
+
+        return;
     }
 });
