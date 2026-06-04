@@ -62,6 +62,7 @@ label {
     border-radius: 12px;
     padding: 15px;
     border: 1px solid rgba(255,255,255,0.15);
+    margin-right: 6px;
 }
 
 /* Lista */
@@ -73,6 +74,11 @@ label {
 .password-rules li{
     padding: 4px 0;
     transition: 0.3s;
+}
+
+.password-rules li i{
+    width: 16px;
+    display: inline-block;
 }
 
 /* Requisito válido */

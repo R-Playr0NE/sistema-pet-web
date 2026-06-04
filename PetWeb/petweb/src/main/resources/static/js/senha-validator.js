@@ -19,250 +19,278 @@ const form = document.querySelector("form");
 // MOSTRAR / OCULTAR SENHA
 // ==============================
 
-document.getElementById("toggleSenha").addEventListener("click", () => {
+function configurarToggleSenha(inputId, buttonId) {
 
-    senhaInput.type =
-        senhaInput.type === "password"
-            ? "text"
-            : "password";
-});
+    const input = document.getElementById(inputId);
+    const button = document.getElementById(buttonId);
 
-document.getElementById("toggleConfirmarSenha").addEventListener("click", () => {
+    if (!input || !button) {
+        return;
+    }
 
-    confirmarSenha.type =
-        confirmarSenha.type === "password"
-            ? "text"
-            : "password";
-});
+    const icon = button.querySelector("i");
+
+    button.addEventListener("click", () => {
+
+        const mostrando = input.type === "password";
+
+        input.type = mostrando ? "text" : "password";
+
+        icon.className = mostrando
+            ? "bi bi-eye-fill"
+            : "bi bi-eye-slash-fill";
+    });
+}
+
+// Cadastro
+configurarToggleSenha(
+    "senhaUsuario",
+    "toggleSenha"
+);
+
+configurarToggleSenha(
+    "confirmarSenha",
+    "toggleConfirmarSenha"
+);
 
 // ==============================
-// EVENTOS
+// CÓDIGO DE VALIDAÇÃO
+// SÓ EXECUTA NO CADASTRO
 // ==============================
 
-senhaInput.addEventListener("input", validarSenha);
+if (senhaInput && confirmarSenha && form) {
 
-confirmarSenha.addEventListener("input", validarConfirmacao);
+    senhaInput.addEventListener("input", validarSenha);
 
-// ==============================
-// VALIDAR SENHA
-// ==============================
-
-function validarSenha() {
-
-    const senha = senhaInput.value;
-
-    let pontos = 0;
-
-    // Critérios
-    const tamanho = senha.length >= 8;
-    const maiuscula = /[A-Z]/.test(senha);
-    const minuscula = /[a-z]/.test(senha);
-    const numero = /[0-9]/.test(senha);
-    const especial = /[^A-Za-z0-9]/.test(senha);
-
-    // Atualiza lista visual
-    atualizarRegra(
-        regraTamanho,
-        tamanho,
-        "Mínimo 8 caracteres"
+    confirmarSenha.addEventListener(
+        "input",
+        validarConfirmacao
     );
 
-    atualizarRegra(
-        regraMaiuscula,
-        maiuscula,
-        "Letra maiúscula"
-    );
+    // ==============================
+    // VALIDAR SENHA
+    // ==============================
 
-    atualizarRegra(
-        regraMinuscula,
-        minuscula,
-        "Letra minúscula"
-    );
+    function validarSenha() {
 
-    atualizarRegra(
-        regraNumero,
-        numero,
-        "Número"
-    );
+        const senha = senhaInput.value;
 
-    atualizarRegra(
-        regraEspecial,
-        especial,
-        "Caractere especial"
-    );
+        let pontos = 0;
 
-    // Soma pontos
-    if (tamanho) pontos++;
-    if (maiuscula) pontos++;
-    if (minuscula) pontos++;
-    if (numero) pontos++;
-    if (especial) pontos++;
+        const tamanho = senha.length >= 8;
+        const maiuscula = /[A-Z]/.test(senha);
+        const minuscula = /[a-z]/.test(senha);
+        const numero = /[0-9]/.test(senha);
+        const especial = /[^A-Za-z0-9]/.test(senha);
 
-    // Reset barra
-    barra.className = "progress-bar";
+        atualizarRegra(
+            regraTamanho,
+            tamanho,
+            "Mínimo 8 caracteres"
+        );
 
-    // Campo vazio
-    if (senha.length === 0) {
+        atualizarRegra(
+            regraMaiuscula,
+            maiuscula,
+            "Letra maiúscula"
+        );
 
-        barra.style.width = "0%";
+        atualizarRegra(
+            regraMinuscula,
+            minuscula,
+            "Letra minúscula"
+        );
 
-        texto.textContent =
-            "Digite uma senha";
+        atualizarRegra(
+            regraNumero,
+            numero,
+            "Número"
+        );
+
+        atualizarRegra(
+            regraEspecial,
+            especial,
+            "Caractere especial"
+        );
+
+        if (tamanho) pontos++;
+        if (maiuscula) pontos++;
+        if (minuscula) pontos++;
+        if (numero) pontos++;
+        if (especial) pontos++;
+
+        barra.className = "progress-bar";
+
+        if (senha.length === 0) {
+
+            barra.style.width = "0%";
+
+            texto.textContent =
+                "Digite uma senha";
+
+            validarConfirmacao();
+
+            return;
+        }
+
+        if (pontos <= 2) {
+
+            barra.style.width = "33%";
+
+            barra.classList.add("bg-danger");
+
+            texto.textContent =
+                "Senha fraca";
+        }
+
+        else if (pontos <= 4) {
+
+            barra.style.width = "66%";
+
+            barra.classList.add("bg-warning");
+
+            texto.textContent =
+                "Senha média";
+        }
+
+        else {
+
+            barra.style.width = "100%";
+
+            barra.classList.add("bg-success");
+
+            texto.textContent =
+                "Senha forte";
+        }
 
         validarConfirmacao();
-
-        return;
     }
 
-    // Senha fraca
-    if (pontos <= 2) {
+    // ==============================
+    // ATUALIZAR REGRAS
+    // ==============================
 
-        barra.style.width = "33%";
+    function atualizarRegra(
+        elemento,
+        valido,
+        textoRegra
+    ) {
 
-        barra.classList.add("bg-danger");
+        if (valido) {
 
-        texto.textContent =
-            "Senha fraca";
+            elemento.classList.remove(
+                "regra-fail"
+            );
+
+            elemento.classList.add(
+                "regra-ok"
+            );
+
+            elemento.innerHTML =
+                `<i class="bi bi-key-fill"></i> ${textoRegra}`;
+        }
+
+        else {
+
+            elemento.classList.remove(
+                "regra-ok"
+            );
+
+            elemento.classList.add(
+                "regra-fail"
+            );
+
+            elemento.innerHTML =
+                `<i class="bi bi-asterisk"></i> ${textoRegra}`;
+        }
     }
 
-    // Senha média
-    else if (pontos <= 4) {
+    // ==============================
+    // VALIDAR CONFIRMAÇÃO
+    // ==============================
 
-        barra.style.width = "66%";
+    function validarConfirmacao() {
 
-        barra.classList.add("bg-warning");
+        const senha = senhaInput.value;
 
-        texto.textContent =
-            "Senha média";
+        const confirmacao =
+            confirmarSenha.value;
+
+        if (confirmacao.length === 0) {
+
+            textoConfirmacao.textContent =
+                "";
+
+            return false;
+        }
+
+        if (senha === confirmacao) {
+
+            textoConfirmacao.innerHTML =
+                `<i class="bi bi-key-fill"></i> Senhas coincidem`;
+
+            textoConfirmacao.className =
+                "text-success";
+
+            return true;
+        }
+
+        else {
+
+            textoConfirmacao.innerHTML =
+                `<i class="bi bi-asterisk"></i> As senhas não coincidem`;
+
+            textoConfirmacao.className =
+                "text-danger";
+
+            return false;
+        }
     }
 
-    // Senha forte
-    else {
+    // ==============================
+    // IMPEDIR ENVIO INVÁLIDO
+    // ==============================
 
-        barra.style.width = "100%";
+    form.addEventListener(
+        "submit",
+        (e) => {
 
-        barra.classList.add("bg-success");
+            const senha =
+                senhaInput.value;
 
-        texto.textContent =
-            "Senha forte";
-    }
+            const senhaValida =
+                senha.length >= 8 &&
+                /[A-Z]/.test(senha) &&
+                /[a-z]/.test(senha) &&
+                /[0-9]/.test(senha) &&
+                /[^A-Za-z0-9]/.test(senha);
 
-    validarConfirmacao();
+            const confirmacaoValida =
+                validarConfirmacao();
+
+            if (!senhaValida) {
+
+                e.preventDefault();
+
+                texto.innerHTML =
+                    `<i class="bi bi-asterisk"></i> A senha não atende os requisitos.`;
+
+                texto.className =
+                    "text-danger";
+
+                return;
+            }
+
+            if (!confirmacaoValida) {
+
+                e.preventDefault();
+
+                textoConfirmacao.innerHTML =
+                    `<i class="bi bi-asterisk"></i> As senhas não coincidem`;
+
+                textoConfirmacao.className =
+                    "text-danger";
+            }
+        }
+    );
 }
-
-// ==============================
-// ATUALIZAR REGRAS
-// ==============================
-
-function atualizarRegra(elemento, valido, textoRegra) {
-
-    if (valido) {
-
-        elemento.classList.remove("regra-fail");
-
-        elemento.classList.add("regra-ok");
-
-        elemento.innerHTML =
-            `✅ ${textoRegra}`;
-    }
-
-    else {
-
-        elemento.classList.remove("regra-ok");
-
-        elemento.classList.add("regra-fail");
-
-        elemento.innerHTML =
-            `❌ ${textoRegra}`;
-    }
-}
-
-// ==============================
-// VALIDAR CONFIRMAÇÃO
-// ==============================
-
-function validarConfirmacao() {
-
-    const senha = senhaInput.value;
-
-    const confirmacao = confirmarSenha.value;
-
-    // Campo vazio
-    if (confirmacao.length === 0) {
-
-        textoConfirmacao.textContent = "";
-
-        return false;
-    }
-
-    // Senhas iguais
-    if (senha === confirmacao) {
-
-        textoConfirmacao.textContent =
-            "✅ Senhas coincidem";
-
-        textoConfirmacao.className =
-            "text-success";
-
-        return true;
-    }
-
-    // Senhas diferentes
-    else {
-
-        textoConfirmacao.textContent =
-            "❌ As senhas não coincidem";
-
-        textoConfirmacao.className =
-            "text-danger";
-
-        return false;
-    }
-}
-
-// ==============================
-// IMPEDIR ENVIO INVÁLIDO
-// ==============================
-
-form.addEventListener("submit", (e) => {
-
-    const senha = senhaInput.value;
-
-    const senhaValida =
-        senha.length >= 8 &&
-        /[A-Z]/.test(senha) &&
-        /[a-z]/.test(senha) &&
-        /[0-9]/.test(senha) &&
-        /[^A-Za-z0-9]/.test(senha);
-
-    const confirmacaoValida =
-        validarConfirmacao();
-
-    // Senha inválida
-    if (!senhaValida) {
-
-        e.preventDefault();
-
-        texto.textContent =
-            "❌ A senha não atende os requisitos.";
-
-        texto.className =
-            "text-danger";
-
-        return;
-    }
-
-    // Confirmação inválida
-    if (!confirmacaoValida) {
-
-        e.preventDefault();
-
-        textoConfirmacao.textContent =
-            "❌ As senhas não coincidem";
-
-        textoConfirmacao.className =
-            "text-danger";
-
-        return;
-    }
-});

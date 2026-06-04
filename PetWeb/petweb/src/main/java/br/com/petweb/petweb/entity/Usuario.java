@@ -32,10 +32,10 @@ public class Usuario {
     @Column(nullable = false, length = 40)
     private String emailUsuario;
 
-    @Column(nullable = false, length = 11)
+    @Column(nullable = false, length = 20)
     private String telefoneUsuario;
 
-    @Column(nullable = false, length = 11)
+    @Column(nullable = false, length = 20)
     private String cpfUsuario;
 
     @Column(nullable = false, length = 40)
