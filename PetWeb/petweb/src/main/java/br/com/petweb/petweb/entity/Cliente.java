@@ -27,13 +27,13 @@ public class Cliente {
     @Column(nullable = false, length = 100)
     private String emailCliente;
 
-    @Column(nullable = false, length = 15)
+    @Column(nullable = false, length = 20)
     private String telefoneCliente;
 
     @Column(nullable = false, length = 50)
     private String enderecoCliente;
 
-    @Column(nullable = false, length = 14)
+    @Column(nullable = false, length = 20)
     private String cpfCliente;
 
 }

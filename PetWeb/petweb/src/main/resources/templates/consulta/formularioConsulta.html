@@ -63,25 +63,29 @@
                     <div class="mb-3">
                         <label>Observação</label>
 
-                        <textarea th:field="*{observacaoConsulta}" class="form-control" rows="3"></textarea>
+                        <textarea th:field="*{observacaoConsulta}" class="form-control" rows="3"
+                        placeholder="Descreva o que o paciente apresenta..."></textarea>
                     </div>
 
                     <div class="mb-3">
                         <label>Valor da Consulta</label>
 
-                        <input type="number" step="0.01" th:field="*{valorConsulta}" class="form-control">
+                        <input type="number" step="0.01" th:field="*{valorConsulta}" class="form-control"
+                        placeholder="Informe o valor da consulta. Ex.: 90,0">
                     </div>
 
                     <div class="mb-3">
                         <label>Diagnóstico</label>
 
-                        <textarea th:field="*{diagnosticoConsulta}" class="form-control" rows="3"></textarea>
+                        <textarea th:field="*{diagnosticoConsulta}" class="form-control" rows="3"
+                        placeholder="Informe o diagnóstico do paciente..."></textarea>
                     </div>
 
                     <div class="mb-4">
                         <label>Tratamento</label>
 
-                        <textarea th:field="*{tratamentoConsulta}" class="form-control" rows="3"></textarea>
+                        <textarea th:field="*{tratamentoConsulta}" class="form-control" rows="3"
+                        placeholder="Descreva o tratamento recomendado..."></textarea>
                     </div>
 
                     <div class="d-grid gap-2">

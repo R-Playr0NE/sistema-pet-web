@@ -25,10 +25,10 @@ public class Veterinario {
     @Column(nullable = false, length = 40)
     private String nomeVeterinario;
 
-    @Column(nullable = false, length = 14)
+    @Column(nullable = false, length = 20)
     private String cpfVeterinario;
 
-    @Column(nullable = false, length = 15)
+    @Column(nullable = false, length = 20)
     private String telefoneVeterinario;
 
     @Column(nullable = false, length = 25)

@@ -41,13 +41,13 @@
 
                     <div class="mb-3">
                         <label>CPF</label>
-                        <input type="text" th:field="*{cpfVeterinario}" class="form-control"
+                        <input type="text" th:field="*{cpfVeterinario}" class="form-control mascara-cpf"
                             placeholder="000.000.000-00">
                     </div>
 
                     <div class="mb-3">
                         <label>Telefone</label>
-                        <input type="text" th:field="*{telefoneVeterinario}" class="form-control"
+                        <input type="text" th:field="*{telefoneVeterinario}" class="form-control mascara-telefone"
                             placeholder="(17) 99999-9999">
                     </div>
 
@@ -79,6 +79,7 @@
         </div>
     </div>
 
+    <script th:src="@{/js/mascaras.js}"></script>
 </body>
 
 </html>

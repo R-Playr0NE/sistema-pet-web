@@ -34,27 +34,32 @@
 
                     <div class="mb-3">
                         <label>Nome</label>
-                        <input type="text" th:field="*{nomeCliente}" class="form-control">
+                        <input type="text" th:field="*{nomeCliente}" class="form-control"
+                        placeholder="Digite o nome">
                     </div>
 
                     <div class="mb-3">
                         <label>Email</label>
-                        <input type="email" th:field="*{emailCliente}" class="form-control">
+                        <input type="email" th:field="*{emailCliente}" class="form-control"
+                        placeholder="exemplo@email.com">
                     </div>
 
                     <div class="mb-3">
                         <label>Telefone</label>
-                        <input type="text" th:field="*{telefoneCliente}" class="form-control">
+                        <input type="text" th:field="*{telefoneCliente}" class="form-control mascara-telefone"
+                        placeholder="(11) 99999-9999">
                     </div>
 
                     <div class="mb-3">
                         <label>Endereço</label>
-                        <input type="text" th:field="*{enderecoCliente}" class="form-control">
+                        <input type="text" th:field="*{enderecoCliente}" class="form-control"
+                        placeholder="Informe o endereço completo">
                     </div>
 
                     <div class="mb-4">
                         <label>CPF</label>
-                        <input type="text" th:field="*{cpfCliente}" class="form-control">
+                        <input type="text" th:field="*{cpfCliente}" class="form-control mascara-cpf"
+                        placeholder="000.000.000-00">
                     </div>
 
                     <div class="d-grid gap-2">
@@ -68,6 +73,7 @@
         </div>
     </div>
 
+    <script th:src="@{/js/mascaras.js}"></script>
 </body>
 
 </html>
