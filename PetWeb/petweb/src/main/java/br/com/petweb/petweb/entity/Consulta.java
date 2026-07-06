@@ -31,7 +31,7 @@ public class Consulta {
     private LocalDate dataConsulta;
     private LocalTime horaConsulta;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 100)
     private String observacaoConsulta;
 
     // Valor da consulta
