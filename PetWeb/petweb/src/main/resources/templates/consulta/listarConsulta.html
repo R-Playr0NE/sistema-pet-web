@@ -51,6 +51,7 @@
                                 <th>Data</th>
                                 <th>Hora</th>
                                 <th>Veterinário</th>
+                                <th>Animal</th>
                                 <th>Valor</th>
                                 <th>Diagnóstico</th>
                                 <th>Ações</th>
@@ -66,6 +67,8 @@
                                 <td th:text="${consulta.horaConsulta}"></td>
 
                                 <td th:text="${consulta.veterinario.nomeVeterinario}"></td>
+
+                                <td th:text="${consulta.animal.nomeAnimal}"></td>
 
                                 <td th:text="${consulta.valorConsulta}"></td>
 

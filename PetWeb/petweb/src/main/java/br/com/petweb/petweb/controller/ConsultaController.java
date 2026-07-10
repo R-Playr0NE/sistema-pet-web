@@ -27,8 +27,8 @@ public class ConsultaController {
     private ConsultaService consultaService;
 
     // // Só um teste...
-    // @Autowired
-    // private AnimalService animalService;
+    @Autowired
+    private AnimalService animalService;
 
     @Autowired
     private VeterinarioService veterinarioService;
@@ -51,6 +51,7 @@ public class ConsultaController {
         model.addAttribute("consulta", new Consulta());
         List<Veterinario> veterinarios = veterinarioService.findAll();
         model.addAttribute("veterinarios", veterinarios);
+        model.addAttribute("animais", animalService.findAll());
         return "consulta/formularioConsulta";
     }
 
@@ -68,6 +69,7 @@ public class ConsultaController {
         model.addAttribute("consulta", consulta);
         List<Veterinario> veterinarios = veterinarioService.findAll();
         model.addAttribute("veterinarios", veterinarios);
+        model.addAttribute("animais", animalService.findAll());
         return "consulta/formularioConsulta";
     }
 

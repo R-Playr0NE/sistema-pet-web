@@ -22,7 +22,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Consulta {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer idConsulta;
@@ -48,6 +48,8 @@ public class Consulta {
     @JoinColumn(name = "idVeterinario_fk")
     private Veterinario veterinario;
 
-    
+    @ManyToOne
+    @JoinColumn(name = "idAnimal_fk")
+    private Animal animal;
 
 }

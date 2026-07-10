@@ -61,33 +61,43 @@
                     </div>
 
                     <!-- É necessario colocar o campo de selecionar o animal -->
+                    <div class="mb-3">
+                        <label>Animal</label>
+                        <select th:field="*{animal}" class="form-select">
+                            <option value="" disabled selected>Selecione o animal</option>
+                            <option th:each="animal : ${animais}"
+                                    th:value="${animal.idAnimal}"
+                                    th:text="${animal.nomeAnimal}">
+                            </option>
+                        </select>
+                    </div>
 
                     <div class="mb-3">
                         <label>Observação</label>
 
                         <textarea th:field="*{observacaoConsulta}" class="form-control" rows="3"
-                        placeholder="Descreva o que o animal apresenta..."></textarea>
+                            placeholder="Descreva o que o animal apresenta..."></textarea>
                     </div>
 
                     <div class="mb-3">
                         <label>Valor da Consulta</label>
 
                         <input type="number" step="0.01" th:field="*{valorConsulta}" class="form-control"
-                        placeholder="Informe o valor da consulta. Ex.: 90,0">
+                            placeholder="Informe o valor da consulta. Ex.: 90,0">
                     </div>
 
                     <div class="mb-3">
                         <label>Diagnóstico</label>
 
                         <textarea th:field="*{diagnosticoConsulta}" class="form-control" rows="3"
-                        placeholder="Informe o diagnóstico do animal..."></textarea>
+                            placeholder="Informe o diagnóstico do animal..."></textarea>
                     </div>
 
                     <div class="mb-4">
                         <label>Tratamento</label>
 
                         <textarea th:field="*{tratamentoConsulta}" class="form-control" rows="3"
-                        placeholder="Descreva o tratamento recomendado..."></textarea>
+                            placeholder="Descreva o tratamento recomendado..."></textarea>
                     </div>
 
                     <div class="d-grid gap-2">
