@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Listagem de Produtos</h1>
+    <a th:href="@{/home}" class="btn btn-secondary">
+                        Voltar
+                    </a>
+    <br><br>
+    <a th:href="@{/produtos/criar}">Novo Produtos</a>
+    <table border="1">
+        <tr>
+            <th>Descrição</th>
+            <th>Marca</th>
+            <th>Unidade</th>
+            <th>Valor</th>
+            <th colspan="2">Ações</th>
+        </tr>
+        <tr th:each="produto : ${produtos}">
+            <td th:text="${produto.descricaoProduto}"></td>
+            <td th:text="${produto.marcaProduto}"></td>
+            <td th:text="${produto.unidadeProduto}"></td>
+            <td th:text="${produto.valorProduto}"></td>
+            <td>
+                <a th:href="@{/produtos/editar/{id}(id=${produto.idProduto})}">Editar</a>
+                <a th:href="@{/produtos/excluir/{id}(id=${produto.idProduto})}">Excluir</a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
