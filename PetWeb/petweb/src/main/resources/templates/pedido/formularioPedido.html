@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Formulário de Pedidos</h1>
+
+    <datalist id="listaClientes">
+        <option th:each="cliente : ${clientes} "
+                th:value="${cliente.idCliente + ' - ' + cliente.nomeCliente}">
+        </option>
+    </datalist>
+
+    <datalist id="listaProdutos">
+        <option th:each="produto : ${produtos}"
+                th:value="${produto.idProduto + ' - ' + produto.descricaoProduto}"
+                th:attr="data-preco=${produto.valorProduto}">
+        </option>
+    </datalist>
+    <p>I. Identificação do Cliente</p>
+    <label for="cliente">Cliente</label>
+    <input
+        list="listaClientes"
+        id="cliente"
+        type="text"
+        placeholder="Digite o nome ou código do Cliente">
+
+    <p>II. Adcionar produto ao Pedido</p>
+    <label for="produto">Produto</label>
+    <input
+        list="listaProdutos"
+        id="produto"
+        type="text"
+        placeholder="Digite o produto">
+
+</body>
+</html>
