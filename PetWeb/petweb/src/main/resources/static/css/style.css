@@ -57,47 +57,1201 @@ label {
 }
 
 /* Caixa dos requisitos */
-.password-rules{
-    background: rgba(255,255,255,0.08);
+.password-rules {
+    background: rgba(255, 255, 255, 0.08);
     border-radius: 12px;
     padding: 15px;
-    border: 1px solid rgba(255,255,255,0.15);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     margin-right: 6px;
 }
 
 /* Lista */
-.password-rules ul{
+.password-rules ul {
     margin: 0;
     padding: 0;
 }
 
-.password-rules li{
+.password-rules li {
     padding: 4px 0;
     transition: 0.3s;
 }
 
-.password-rules li i{
+.password-rules li i {
     width: 16px;
     display: inline-block;
 }
 
 /* Requisito válido */
-.regra-ok{
+.regra-ok {
     color: #198754;
     font-weight: 600;
 }
 
 /* Requisito inválido */
-.regra-fail{
+.regra-fail {
     color: #dc3545;
 }
 
 /* Botão visualizar senha */
-.input-group .btn{
+.input-group .btn {
     border-radius: 0 10px 10px 0;
 }
 
 /* Campo de senha */
-.input-group .form-control{
+.input-group .form-control {
     border-radius: 10px 0 0 10px;
+}
+
+/* =========================================
+   LISTAGEM DE PRODUTOS
+   ========================================= */
+
+.produto-card {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.97);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.20);
+}
+
+
+/* Cabeçalho */
+
+.produto-header {
+    background: linear-gradient(135deg, #ff6b9d, #4ecdc4);
+    color: white;
+
+    padding: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+.produto-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.produto-header p {
+    opacity: 0.9;
+}
+
+
+/* Botão voltar */
+
+.btn-voltar {
+    border-radius: 10px;
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+.btn-voltar:hover {
+    transform: translateY(-2px);
+}
+
+
+/* Corpo */
+
+.produto-body {
+    padding: 30px;
+}
+
+
+/* Botão novo produto */
+
+.btn-novo {
+    padding: 10px 20px;
+    border-radius: 10px;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+.btn-novo:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(78, 205, 196, 0.35);
+}
+
+
+/* Tabela */
+
+.produto-table {
+    margin-bottom: 0;
+}
+
+.produto-table thead th {
+    background: #f8f9fa;
+
+    color: #495057;
+
+    font-weight: 700;
+
+    border-bottom: 2px solid #dee2e6;
+
+    padding: 15px;
+}
+
+.produto-table tbody td {
+    padding: 15px;
+
+    color: #495057;
+}
+
+.produto-table tbody tr {
+    transition: 0.2s;
+}
+
+.produto-table tbody tr:hover {
+    background-color: rgba(78, 205, 196, 0.06);
+}
+
+
+/* Descrição */
+
+.produto-descricao {
+    font-weight: 600;
+    color: #343a40;
+}
+
+
+/* Marca */
+
+.produto-marca {
+    color: #6c757d;
+}
+
+
+/* Unidade */
+
+.unidade-badge {
+    background: #667eea;
+    color: white;
+
+    font-size: 12px;
+
+    padding: 7px 10px;
+
+    border-radius: 8px;
+}
+
+
+/* Valor */
+
+.produto-valor {
+    color: #198754;
+    white-space: nowrap;
+}
+
+
+/* Botão editar */
+
+.btn-editar {
+    background: #667eea;
+    color: white;
+
+    border: none;
+
+    border-radius: 8px;
+
+    padding: 7px 12px;
+
+    font-weight: 600;
+
+    transition: 0.2s;
+}
+
+.btn-editar:hover {
+    background: #5568d9;
+    color: white;
+
+    transform: translateY(-1px);
+}
+
+
+/* Botão excluir */
+
+.btn-excluir {
+    background: #dc3545;
+    color: white;
+
+    border: none;
+
+    border-radius: 8px;
+
+    padding: 7px 12px;
+
+    font-weight: 600;
+
+    transition: 0.2s;
+}
+
+.btn-excluir:hover {
+    background: #bb2d3b;
+    color: white;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================
+   RESPONSIVIDADE
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    .container {
+        padding-top: 20px !important;
+        padding-bottom: 20px !important;
+    }
+
+    .produto-header {
+        padding: 25px 20px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .produto-header h1 {
+        font-size: 23px;
+    }
+
+    .btn-voltar {
+        width: 100%;
+    }
+
+    .produto-body {
+        padding: 20px;
+    }
+
+    .btn-novo {
+        width: 100%;
+    }
+
+    .produto-body>.d-flex {
+        display: block !important;
+    }
+
+}
+
+
+/* Celulares pequenos */
+
+@media (max-width: 576px) {
+
+    body {
+        min-height: 100vh;
+    }
+
+    .produto-card {
+        border-radius: 15px;
+    }
+
+    .produto-header {
+        padding: 20px 15px;
+    }
+
+    .produto-header h1 {
+        font-size: 21px;
+    }
+
+    .produto-body {
+        padding: 15px;
+    }
+
+    .produto-table {
+        font-size: 14px;
+    }
+
+    .produto-table thead th,
+    .produto-table tbody td {
+        padding: 10px;
+    }
+
+}
+
+/* =========================================
+   FORMULÁRIO DE PRODUTOS
+   ========================================= */
+
+.produto-form-card {
+    width: 100%;
+    max-width: 850px;
+
+    margin: 0 auto;
+
+    background: rgba(255, 255, 255, 0.97);
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.20);
+}
+
+
+/* =========================================
+   CABEÇALHO
+   ========================================= */
+
+.produto-form-header {
+    background: linear-gradient(135deg, #ff6b9d, #4ecdc4);
+
+    color: white;
+
+    padding: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+.produto-form-header h1 {
+    font-size: 28px;
+
+    font-weight: 700;
+
+    margin-bottom: 5px;
+}
+
+.produto-form-header h1 i {
+    margin-right: 8px;
+}
+
+.produto-form-header p {
+    opacity: 0.9;
+}
+
+
+/* =========================================
+   BOTÃO VOLTAR
+   ========================================= */
+
+.produto-form-header .btn-voltar {
+    border-radius: 10px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    transition: 0.3s;
+}
+
+.produto-form-header .btn-voltar:hover {
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   CORPO DO FORMULÁRIO
+   ========================================= */
+
+.produto-form-body {
+    padding: 35px;
+}
+
+
+/* =========================================
+   LABELS
+   ========================================= */
+
+.produto-form-body label {
+    display: block;
+
+    color: #495057;
+
+    font-weight: 600;
+
+    margin-bottom: 8px;
+}
+
+.produto-form-body label i {
+    color: #667eea;
+
+    margin-right: 5px;
+}
+
+
+/* =========================================
+   CAMPOS
+   ========================================= */
+
+.produto-form-body .form-control {
+    min-height: 46px;
+
+    border: 1px solid #dee2e6;
+
+    border-radius: 10px;
+
+    padding: 10px 14px;
+
+    transition: 0.2s;
+}
+
+.produto-form-body .form-control:focus {
+    border-color: #667eea;
+
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.15);
+}
+
+
+/* Placeholder */
+
+.produto-form-body .form-control::placeholder {
+    color: #adb5bd;
+}
+
+
+/* =========================================
+   CAMPO DE VALOR
+   ========================================= */
+
+.produto-form-body .input-group-text {
+    background: #f8f9fa;
+
+    border: 1px solid #dee2e6;
+
+    border-radius: 10px 0 0 10px;
+
+    color: #198754;
+
+    font-weight: 600;
+}
+
+.produto-form-body .input-group .form-control {
+    border-radius: 0 10px 10px 0;
+}
+
+
+/* =========================================
+   BOTÕES
+   ========================================= */
+
+.produto-form-actions {
+    margin-top: 35px;
+
+    padding-top: 25px;
+
+    border-top: 1px solid #e9ecef;
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 12px;
+}
+
+.btn-form {
+    min-width: 140px;
+
+    padding: 10px 18px;
+
+    border-radius: 10px;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+.btn-form:hover {
+    transform: translateY(-2px);
+}
+
+
+/* Botão salvar */
+
+.produto-form-actions .btn-green:hover {
+    box-shadow: 0 5px 15px rgba(78, 205, 196, 0.35);
+}
+
+
+/* =========================================
+   RESPONSIVIDADE
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    .container {
+        padding-top: 20px !important;
+        padding-bottom: 20px !important;
+    }
+
+    .produto-form-card {
+        border-radius: 15px;
+    }
+
+    .produto-form-header {
+        padding: 25px 20px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .produto-form-header h1 {
+        font-size: 23px;
+    }
+
+    .produto-form-header .btn-voltar {
+        width: 100%;
+
+        text-align: center;
+    }
+
+    .produto-form-body {
+        padding: 25px 20px;
+    }
+
+    .produto-form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .btn-form {
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================
+   CELULARES PEQUENOS
+   ========================================= */
+
+@media (max-width: 576px) {
+
+    .produto-form-header {
+        padding: 20px 15px;
+    }
+
+    .produto-form-header h1 {
+        font-size: 21px;
+    }
+
+    .produto-form-body {
+        padding: 20px 15px;
+    }
+
+}
+
+/* =========================================
+   FORMULÁRIO DE PEDIDOS
+   ========================================= */
+
+.pedido-card {
+    width: 100%;
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    background: rgba(255, 255, 255, 0.97);
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.20);
+}
+
+
+/* =========================================
+   CABEÇALHO
+   ========================================= */
+
+.pedido-header {
+    background: linear-gradient(135deg, #ff6b9d, #4ecdc4);
+
+    color: white;
+
+    padding: 30px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+.pedido-header h1 {
+    font-size: 28px;
+
+    font-weight: 700;
+
+    margin-bottom: 5px;
+}
+
+.pedido-header h1 i {
+    margin-right: 8px;
+}
+
+.pedido-header p {
+    opacity: 0.9;
+}
+
+
+/* =========================================
+   BOTÃO VOLTAR
+   ========================================= */
+
+.pedido-btn-voltar {
+    border-radius: 10px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    transition: 0.3s;
+}
+
+.pedido-btn-voltar:hover {
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   CORPO
+   ========================================= */
+
+.pedido-body {
+    padding: 35px;
+}
+
+
+/* =========================================
+   SEÇÕES
+   ========================================= */
+
+.pedido-section {
+    padding: 25px 0;
+
+    border-bottom: 1px solid #e9ecef;
+}
+
+.pedido-section:first-child {
+    padding-top: 0;
+}
+
+.pedido-section:last-of-type {
+    border-bottom: none;
+}
+
+
+/* =========================================
+   TÍTULO DAS SEÇÕES
+   ========================================= */
+
+.pedido-section-title {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+}
+
+.pedido-section-title h2 {
+    font-size: 20px;
+
+    font-weight: 700;
+
+    color: #343a40;
+
+    margin: 0;
+}
+
+.pedido-section-title p {
+    color: #6c757d;
+
+    font-size: 14px;
+
+    margin: 3px 0 0;
+}
+
+
+/* Número da etapa */
+
+.pedido-section-number {
+    width: 42px;
+
+    height: 42px;
+
+    min-width: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: linear-gradient(135deg,
+            #667eea,
+            #764ba2);
+
+    color: white;
+
+    font-weight: 700;
+
+    font-size: 17px;
+
+    box-shadow:
+        0 5px 12px rgba(102, 126, 234, 0.25);
+}
+
+
+/* =========================================
+   LABELS
+   ========================================= */
+
+.pedido-section label {
+    display: block;
+
+    color: #495057;
+
+    font-weight: 600;
+
+    margin-bottom: 8px;
+}
+
+.pedido-section label i {
+    color: #667eea;
+
+    margin-right: 5px;
+}
+
+
+/* =========================================
+   INPUTS
+   ========================================= */
+
+.pedido-section .form-control {
+    min-height: 46px;
+
+    border: 1px solid #dee2e6;
+
+    border-radius: 10px;
+
+    padding: 10px 14px;
+
+    transition: 0.2s;
+}
+
+.pedido-section .form-control:focus {
+    border-color: #667eea;
+
+    box-shadow:
+        0 0 0 0.2rem rgba(102, 126, 234, 0.15);
+}
+
+.pedido-section .form-control::placeholder {
+    color: #adb5bd;
+}
+
+
+/* =========================================
+   BOTÃO ADICIONAR
+   ========================================= */
+
+.pedido-btn-adicionar {
+    min-height: 46px;
+
+    border-radius: 10px;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+.pedido-btn-adicionar:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 15px rgba(78, 205, 196, 0.35);
+}
+
+
+/* =========================================
+   TABELA
+   ========================================= */
+
+.pedido-table-wrapper {
+    border: 1px solid #e9ecef;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+}
+
+.pedido-table {
+    margin-bottom: 0;
+}
+
+.pedido-table thead th {
+    background: #f8f9fa;
+
+    color: #495057;
+
+    font-weight: 700;
+
+    border-bottom: 2px solid #dee2e6;
+
+    padding: 15px;
+}
+
+.pedido-table tbody td {
+    padding: 14px 15px;
+
+    color: #495057;
+
+    border-bottom: 1px solid #f1f3f5;
+}
+
+.pedido-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.pedido-table tbody tr {
+    transition: 0.2s;
+}
+
+.pedido-table tbody tr:hover {
+    background: rgba(78, 205, 196, 0.05);
+}
+
+
+/* =========================================
+   PRODUTO NA TABELA
+   ========================================= */
+
+.produto-tabela-nome {
+    font-weight: 600;
+
+    color: #343a40;
+}
+
+
+/* =========================================
+   QUANTIDADE EDITÁVEL
+   ========================================= */
+
+.quantidade-input {
+    width: 90px;
+
+    margin: 0 auto;
+
+    text-align: center;
+
+    border-radius: 8px !important;
+
+    font-weight: 600;
+}
+
+.quantidade-input:focus {
+    border-color: #667eea;
+
+    box-shadow:
+        0 0 0 0.2rem rgba(102, 126, 234, 0.15);
+}
+
+
+/* =========================================
+   PREÇOS
+   ========================================= */
+
+.preco-tabela {
+    color: #6c757d;
+
+    white-space: nowrap;
+}
+
+.subtotal-tabela {
+    color: #198754;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   BOTÃO REMOVER
+   ========================================= */
+
+.btn-remover {
+    border-radius: 8px;
+
+    font-weight: 600;
+
+    transition: 0.2s;
+}
+
+.btn-remover:hover {
+    transform: translateY(-1px);
+}
+
+
+/* =========================================
+   TABELA VAZIA
+   ========================================= */
+
+.pedido-empty {
+    height: 130px;
+
+    text-align: center;
+
+    color: #adb5bd !important;
+}
+
+.pedido-empty i {
+    display: block;
+
+    font-size: 32px;
+
+    margin-bottom: 8px;
+}
+
+.pedido-empty span {
+    font-size: 14px;
+}
+
+
+/* =========================================
+   TOTAL DO PEDIDO
+   ========================================= */
+
+.pedido-total {
+    margin-top: 20px;
+
+    padding: 20px 25px;
+
+    border-radius: 12px;
+
+    background: linear-gradient(135deg,
+            rgba(102, 126, 234, 0.08),
+            rgba(78, 205, 196, 0.08));
+
+    border: 1px solid rgba(102, 126, 234, 0.12);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+.pedido-total-label {
+    display: block;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    color: #343a40;
+}
+
+.pedido-total small {
+    color: #6c757d;
+}
+
+.pedido-total strong {
+    font-size: 26px;
+
+    color: #198754;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   AÇÕES
+   ========================================= */
+
+.pedido-actions {
+    margin-top: 30px;
+
+    padding-top: 25px;
+
+    border-top: 1px solid #e9ecef;
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 12px;
+}
+
+.pedido-btn {
+    min-width: 150px;
+
+    padding: 11px 18px;
+
+    border-radius: 10px;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+.pedido-btn:hover {
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   RESPONSIVIDADE
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    .container {
+        padding-top: 20px !important;
+
+        padding-bottom: 20px !important;
+    }
+
+
+    .pedido-card {
+        border-radius: 15px;
+    }
+
+
+    .pedido-header {
+        padding: 25px 20px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+
+    .pedido-header h1 {
+        font-size: 23px;
+    }
+
+
+    .pedido-btn-voltar {
+        width: 100%;
+
+        text-align: center;
+    }
+
+
+    .pedido-body {
+        padding: 25px 20px;
+    }
+
+
+    .pedido-section {
+        padding: 20px 0;
+    }
+
+
+    .pedido-section-title {
+        align-items: flex-start;
+    }
+
+
+    .pedido-section-title h2 {
+        font-size: 18px;
+    }
+
+
+    .pedido-actions {
+        flex-direction: column-reverse;
+    }
+
+
+    .pedido-btn {
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================
+   CELULARES PEQUENOS
+   ========================================= */
+
+@media (max-width: 576px) {
+
+    .pedido-header {
+        padding: 20px 15px;
+    }
+
+
+    .pedido-header h1 {
+        font-size: 21px;
+    }
+
+
+    .pedido-body {
+        padding: 20px 15px;
+    }
+
+
+    .pedido-section-title {
+        gap: 10px;
+    }
+
+
+    .pedido-section-number {
+        width: 36px;
+
+        height: 36px;
+
+        min-width: 36px;
+
+        font-size: 14px;
+    }
+
+
+    .pedido-section-title h2 {
+        font-size: 17px;
+    }
+
+
+    .pedido-section-title p {
+        font-size: 13px;
+    }
+
+
+    .pedido-total {
+        padding: 17px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 8px;
+    }
+
+
+    .pedido-total strong {
+        font-size: 23px;
+    }
+
+
+    .pedido-table {
+        font-size: 14px;
+    }
+
+
+    .pedido-table thead th,
+    .pedido-table tbody td {
+        padding: 10px;
+    }
+
+
+    .quantidade-input {
+        width: 70px;
+    }
+
 }
