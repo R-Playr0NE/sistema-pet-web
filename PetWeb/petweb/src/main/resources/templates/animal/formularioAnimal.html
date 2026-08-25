@@ -28,29 +28,28 @@
 
             <div class="card-body p-5">
 
-                <form th:action="@{/animais/salvar}" method="post" th:object="${animal}">
+                <form th:action="@{/animais/salvar}" method="post" th:object="${animal}" enctype="multipart/form-data">
 
                     <input type="hidden" th:field="*{idAnimal}">
 
                     <div class="mb-3">
                         <label>Nome</label>
                         <input type="text" th:field="*{nomeAnimal}" class="form-control"
-                        placeholder="Informe o nome do animal">
+                            placeholder="Informe o nome do animal">
                     </div>
 
                     <div class="mb-3">
                         <label>Raça</label>
                         <input type="text" th:field="*{raca}" class="form-control"
-                        placeholder="Informe a raça do animal">
+                            placeholder="Informe a raça do animal">
                     </div>
 
                     <div class="mb-3">
                         <label for="idCliente">Tutor/Dono</label>
                         <select th:field="*{cliente}" class="form-select">
                             <option value="" disabled selected>Selecione o tutor/dono</option>
-                            <option th:each="cliente : ${clientes}"
-                            th:text="${cliente.nomeCliente}"
-                            th:value="${cliente.idCliente}"></option>
+                            <option th:each="cliente : ${clientes}" th:text="${cliente.nomeCliente}"
+                                th:value="${cliente.idCliente}"></option>
                         </select>
                     </div>
 
@@ -66,8 +65,14 @@
 
                     <div class="mb-4">
                         <label>Peso</label>
-                        <input type="text" th:field="*{peso}" class="form-control"
-                        placeholder="Ex.: 12.50 kg">
+                        <input type="text" th:field="*{peso}" class="form-control" placeholder="Ex.: 12.50 kg">
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="fotoAnimal">Foto</label>
+                        <input type="file" id="fotoAnimal" name="foto" accept="image/*" class="form-control"
+                            placeholder="Incira a Imagem do pet">
+                        Tamanho máximo: 2Mb
                     </div>
 
                     <div class="d-grid gap-2">

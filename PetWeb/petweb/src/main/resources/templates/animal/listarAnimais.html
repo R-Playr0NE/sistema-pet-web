@@ -43,6 +43,7 @@
                                 <th>Porte</th>
                                 <th>Peso</th>
                                 <th>Tutor</th>
+                                <th>Foto</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
@@ -54,6 +55,10 @@
                                 <td th:text="${animal.porte}"></td>
                                 <td th:text="${animal.peso}"></td>
                                 <td th:text="${animal.cliente.nomeCliente}"></td>
+                                <td>
+                                    <img th:if="${animal.fotoAnimal != null}"
+                                        th:src="@{/animais/foto/{id}(id=${animal.idAnimal})}" width="60" height="70" alt="Foto Animal">
+                                </td>
                                 <td>
                                     <a th:href="@{/animais/editar/{id}(id=${animal.idAnimal})}"
                                         class="btn btn-sm btn-warning">Editar</a>
