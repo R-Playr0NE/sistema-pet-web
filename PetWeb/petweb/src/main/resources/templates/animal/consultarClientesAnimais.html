@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lists de Tutores e Animais</title>
+</head>
+<body>
+    
+    <h1 style="text-align: center;">Lista de Tutores e Animais</h1>
+    <table style="border-collapse: collapse;">
+        <thead>
+            <tr>
+                <th>Tutor</th>
+                <th>Telefone</th>
+                <th>Animal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="resultado : ${resultados}">
+                <td th:each="${resultado.nomeCliente}"></td>
+                <td th:each="${resultado.telefoneCliente}"></td>
+                <td th:each="${resultado.nomeAnimal}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
