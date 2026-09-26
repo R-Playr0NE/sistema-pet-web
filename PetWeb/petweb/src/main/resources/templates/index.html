@@ -4,67 +4,696 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>PetWeb - Sistema de Gerenciamento de Pets</title>
+
     <!-- Icone da pagina -->
     <link rel="icon" type="image/png" th:href="@{/img/paginaicon.png}">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-        <!-- Bootstrap Icons -->
+
+    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
     <!-- Meu css -->
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 
 <body>
-    <div class="container d-flex justify-content-center align-items-center min-vh-100">
-        <div class="card shadow-lg border-0 rounded-4 pet-card">
+    <!-- === NAVBAR === -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
 
-            <!-- Header -->
-            <div class="card-header text-center text-white border-0 rounded-top-4 pet-header">
-                <div class="fs-1"><i class="bi bi-house-heart-fill"></i></div>
-                <h1 class="fw-bold">PetWeb</h1>
-                <p class="mb-0">Gerenciamento Completo para Seus Pets</p>
-            </div>
+        <div class="container-fluid px-4 px-lg-5">
 
-            <!-- Body -->
-            <div class="card-body p-5 text-center">
-                <h2 class="fw-bold mb-3">Bem-vindo!</h2>
+            <!-- Logo -->
+            <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="#">
+                <i class="bi bi-house-heart-fill fs-3"></i>
+                <span>PetWeb</span>
+            </a>
 
-                <p class="text-muted mb-4">
-                    Gerencie todas as informações dos seus pets em um só lugar.
-                    Organize registros de saúde, vacinações e muito mais.
-                </p>
+            <!-- Botão menu mobile -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
+                aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir menu">
 
-                <div class="d-grid gap-3">
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <!-- Menu -->
+            <div class="collapse navbar-collapse" id="menuPrincipal">
+
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">
+                            <i class="bi bi-house-fill me-1"></i>
+                            Início
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sobre">
+                            <i class="bi bi-info-circle-fill me-1"></i>
+                            Sobre
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#servicos">
+                            <i class="bi bi-grid-fill me-1"></i>
+                            Serviços
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#acesso">
+                            <i class="bi bi-person-circle me-1"></i>
+                            Acesso
+                        </a>
+                    </li>
+
+                </ul>
+
+                <!-- Ações da direita -->
+                <div class="d-flex flex-column flex-lg-row gap-2">
 
                     <form action="/login" method="get">
-                        <button type="submit" class="btn btn-lg btn-pink w-100"><i class="bi bi-unlock-fill"></i> Acesso ao Sistema</button>
+                        <button type="submit" class="btn btn-pink">
+                            <i class="bi bi-unlock-fill me-1"></i>
+                            Entrar
+                        </button>
                     </form>
 
                     <form action="/usuarios/criar" method="get">
-                        <button type="submit" class="btn btn-lg btn-green w-100"><i class="bi bi-person-plus-fill"></i> Cadastre-se</button>
+                        <button type="submit" class="btn btn-green">
+                            <i class="bi bi-person-plus-fill me-1"></i>
+                            Cadastre-se
+                        </button>
                     </form>
 
                 </div>
-            </div>
 
-            <!-- Footer -->
-            <div class="card-footer text-center bg-white border-0 text-muted small pb-4">
-                © 2026 PetWeb. Todos os direitos reservados |
-                <a href="#" class="text-decoration-none fw-bold">Política de Privacidade</a>
             </div>
 
         </div>
-    </div>
+
+    </nav>
+    <!-- === HERO / APRESENTAÇÃO PRINCIPAL === -->
+    <section class="py-5">
+
+        <div class="container py-4 py-lg-5">
+
+            <div class="row align-items-center g-5">
+
+                <!-- Texto -->
+                <div class="col-lg-6 text-white">
+
+                    <span class="badge bg-light text-dark rounded-pill px-3 py-2 mb-3">
+                        <i class="bi bi-heart-fill me-1 text-danger"></i>
+                        Cuidado e gestão em um só lugar
+                    </span>
+
+                    <h1 class="display-4 fw-bold mb-4">
+                        Tudo para cuidar dos seus pets
+                        <span class="d-block">de forma simples.</span>
+                    </h1>
+
+                    <p class="lead mb-4">
+                        O PetWeb reúne informações, clientes, animais,
+                        produtos e pedidos em uma única plataforma.
+                    </p>
+
+                    <p class="mb-4 opacity-75">
+                        Organize sua rotina, acompanhe os registros dos
+                        seus pets e tenha uma experiência mais prática
+                        no gerenciamento da sua loja.
+                    </p>
+
+                    <!-- Botões principais -->
+                    <div class="d-flex flex-column flex-sm-row gap-3">
+
+                        <form action="/login" method="get">
+                            <button type="submit" class="btn btn-lg btn-pink px-4">
+                                <i class="bi bi-unlock-fill me-2"></i>
+                                Acesso ao Sistema
+                            </button>
+                        </form>
+
+                        <form action="/usuarios/criar" method="get">
+                            <button type="submit" class="btn btn-lg btn-green px-4">
+                                <i class="bi bi-person-plus-fill me-2"></i>
+                                Criar minha conta
+                            </button>
+                        </form>
+
+                    </div>
+
+                </div>
 
 
+                <!-- Card visual -->
+                <div class="col-lg-6">
+
+                    <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+
+                        <div class="card-body p-4 p-lg-5">
+
+                            <div class="text-center mb-4">
+
+                                <div class="display-1 mb-3">
+                                    <i class="bi bi-heart-pulse-fill text-danger"></i>
+                                </div>
+
+                                <h2 class="fw-bold">
+                                    PetWeb
+                                </h2>
+
+                                <p class="text-muted mb-0">
+                                    Gestão completa para sua rotina pet
+                                </p>
+
+                            </div>
 
 
+                            <!-- Indicadores -->
+                            <div class="row g-3">
 
+                                <div class="col-6">
+                                    <div class="bg-light rounded-4 p-3 text-center h-100">
+
+                                        <i class="bi bi-person-hearts fs-2" style="color: #ff6b9d;"></i>
+
+                                        <h6 class="fw-bold mt-2 mb-1">
+                                            Clientes
+                                        </h6>
+
+                                        <small class="text-muted">
+                                            Organizados
+                                        </small>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="col-6">
+                                    <div class="bg-light rounded-4 p-3 text-center h-100">
+
+                                        <i class="bi bi-heart-fill fs-2" style="color: #4ecdc4;"></i>
+
+                                        <h6 class="fw-bold mt-2 mb-1">
+                                            Pets
+                                        </h6>
+
+                                        <small class="text-muted">
+                                            Sempre registrados
+                                        </small>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="col-6">
+                                    <div class="bg-light rounded-4 p-3 text-center h-100">
+
+                                        <i class="bi bi-box-seam-fill fs-2" style="color: #667eea;"></i>
+
+                                        <h6 class="fw-bold mt-2 mb-1">
+                                            Produtos
+                                        </h6>
+
+                                        <small class="text-muted">
+                                            Controle simplificado
+                                        </small>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="col-6">
+                                    <div class="bg-light rounded-4 p-3 text-center h-100">
+
+                                        <i class="bi bi-cart-check-fill fs-2" style="color: #198754;"></i>
+
+                                        <h6 class="fw-bold mt-2 mb-1">
+                                            Pedidos
+                                        </h6>
+
+                                        <small class="text-muted">
+                                            Gestão organizada
+                                        </small>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+    <!-- === SOBRE O PETWEB === -->
+
+    <section id="sobre" class="bg-white py-5">
+
+        <div class="container py-4">
+
+            <div class="row align-items-center g-5">
+
+                <div class="col-lg-6">
+
+                    <span class="text-uppercase fw-bold small" style="color: #667eea;">
+                        Sobre o PetWeb
+                    </span>
+
+                    <h2 class="display-6 fw-bold mt-2 mb-4">
+                        Uma plataforma pensada para facilitar seu dia a dia
+                    </h2>
+
+                    <p class="text-muted">
+                        O PetWeb foi desenvolvido para centralizar
+                        informações importantes em um único sistema,
+                        tornando o gerenciamento mais organizado e
+                        acessível.
+                    </p>
+
+                    <p class="text-muted">
+                        Através da plataforma é possível trabalhar com
+                        informações de clientes, animais, produtos e
+                        pedidos de maneira integrada.
+                    </p>
+
+                    <div class="d-flex align-items-center gap-3 mt-4">
+
+                        <div class="rounded-circle d-flex align-items-center justify-content-center"
+                            style="width: 50px; height: 50px; background: rgba(255, 107, 157, 0.12);">
+
+                            <i class="bi bi-check-lg fs-4" style="color: #ff6b9d;"></i>
+
+                        </div>
+
+                        <div>
+                            <strong class="d-block">
+                                Organização
+                            </strong>
+
+                            <small class="text-muted">
+                                Informações centralizadas em um só lugar.
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="d-flex align-items-center gap-3 mt-3">
+
+                        <div class="rounded-circle d-flex align-items-center justify-content-center"
+                            style="width: 50px; height: 50px; background: rgba(78, 205, 196, 0.12);">
+
+                            <i class="bi bi-check-lg fs-4" style="color: #4ecdc4;"></i>
+
+                        </div>
+
+                        <div>
+                            <strong class="d-block">
+                                Praticidade
+                            </strong>
+
+                            <small class="text-muted">
+                                Acesso rápido às principais funcionalidades.
+                            </small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-6">
+
+                    <div class="card border-0 shadow-sm rounded-4 h-100">
+
+                        <div class="card-body p-4 p-lg-5">
+
+                            <div class="text-center mb-4">
+
+                                <i class="bi bi-house-heart-fill display-3" style="color: #ff6b9d;"></i>
+
+                                <h3 class="fw-bold mt-3">
+                                    Seu espaço Pet
+                                </h3>
+
+                            </div>
+
+                            <div class="row g-3">
+
+                                <div class="col-12">
+                                    <div class="d-flex align-items-center gap-3 p-3 rounded-3 bg-light">
+
+                                        <i class="bi bi-person-vcard-fill fs-3" style="color: #667eea;"></i>
+
+                                        <div>
+                                            <strong class="d-block">
+                                                Cadastro de clientes
+                                            </strong>
+
+                                            <small class="text-muted">
+                                                Mantenha os dados dos clientes organizados.
+                                            </small>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="col-12">
+                                    <div class="d-flex align-items-center gap-3 p-3 rounded-3 bg-light">
+
+                                        <i class="bi bi-clipboard-heart-fill fs-3" style="color: #ff6b9d;"></i>
+
+                                        <div>
+                                            <strong class="d-block">
+                                                Registro de animais
+                                            </strong>
+
+                                            <small class="text-muted">
+                                                Consulte os pets associados aos seus clientes.
+                                            </small>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="col-12">
+                                    <div class="d-flex align-items-center gap-3 p-3 rounded-3 bg-light">
+
+                                        <i class="bi bi-shop fs-3" style="color: #4ecdc4;"></i>
+
+                                        <div>
+                                            <strong class="d-block">
+                                                Gestão da loja
+                                            </strong>
+
+                                            <small class="text-muted">
+                                                Produtos e pedidos em um único ambiente.
+                                            </small>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+    <!-- === SERVIÇOS === -->
+    <section id="servicos" class="py-5">
+
+        <div class="container py-4">
+
+            <div class="text-center text-white mb-5">
+
+                <span class="text-uppercase fw-bold small">
+                    Funcionalidades
+                </span>
+
+                <h2 class="display-6 fw-bold mt-2">
+                    O que você encontra no PetWeb
+                </h2>
+
+                <p class="mb-0 opacity-75">
+                    Recursos para deixar sua rotina mais organizada.
+                </p>
+
+            </div>
+
+
+            <div class="row g-4">
+
+                <!-- Clientes -->
+                <div class="col-md-6 col-lg-3">
+
+                    <div class="card border-0 shadow-sm rounded-4 h-100">
+
+                        <div class="card-body p-4 text-center">
+
+                            <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center"
+                                style="width: 65px; height: 65px; background: rgba(255, 107, 157, 0.12);">
+
+                                <i class="bi bi-people-fill fs-3" style="color: #ff6b9d;"></i>
+
+                            </div>
+
+                            <h5 class="fw-bold">
+                                Clientes
+                            </h5>
+
+                            <p class="text-muted small mb-0">
+                                Cadastre e organize as informações
+                                dos seus clientes.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Animais -->
+                <div class="col-md-6 col-lg-3">
+
+                    <div class="card border-0 shadow-sm rounded-4 h-100">
+
+                        <div class="card-body p-4 text-center">
+
+                            <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center"
+                                style="width: 65px; height: 65px; background: rgba(78, 205, 196, 0.12);">
+
+                                <i class="bi bi-heart-fill fs-3" style="color: #4ecdc4;"></i>
+
+                            </div>
+
+                            <h5 class="fw-bold">
+                                Animais
+                            </h5>
+
+                            <p class="text-muted small mb-0">
+                                Consulte e acompanhe os pets
+                                cadastrados.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Produtos -->
+                <div class="col-md-6 col-lg-3">
+
+                    <div class="card border-0 shadow-sm rounded-4 h-100">
+
+                        <div class="card-body p-4 text-center">
+
+                            <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center"
+                                style="width: 65px; height: 65px; background: rgba(102, 126, 234, 0.12);">
+
+                                <i class="bi bi-box-seam-fill fs-3" style="color: #667eea;"></i>
+
+                            </div>
+
+                            <h5 class="fw-bold">
+                                Produtos
+                            </h5>
+
+                            <p class="text-muted small mb-0">
+                                Gerencie os produtos disponíveis
+                                na loja.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Pedidos -->
+                <div class="col-md-6 col-lg-3">
+
+                    <div class="card border-0 shadow-sm rounded-4 h-100">
+
+                        <div class="card-body p-4 text-center">
+
+                            <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center"
+                                style="width: 65px; height: 65px; background: rgba(25, 135, 84, 0.12);">
+
+                                <i class="bi bi-cart-check-fill fs-3" style="color: #198754;"></i>
+
+                            </div>
+
+                            <h5 class="fw-bold">
+                                Pedidos
+                            </h5>
+
+                            <p class="text-muted small mb-0">
+                                Controle seus pedidos de maneira
+                                organizada.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+    <!-- === ACESSO AO SISTEMA === -->
+    <section id="acesso" class="bg-white py-5">
+
+        <div class="container py-4">
+
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+
+                <div class="card-body p-4 p-md-5">
+
+                    <div class="row align-items-center g-4">
+
+                        <div class="col-lg-8">
+
+                            <span class="badge rounded-pill text-bg-light mb-3">
+                                <i class="bi bi-shield-lock-fill me-1"></i>
+                                Acesso ao PetWeb
+                            </span>
+
+                            <h2 class="fw-bold mb-2">
+                                Pronto para começar?
+                            </h2>
+
+                            <p class="text-muted mb-0">
+                                Acesse o sistema com sua conta ou
+                                realize seu cadastro para começar.
+                            </p>
+
+                        </div>
+
+
+                        <div class="col-lg-4">
+
+                            <div class="d-grid gap-2">
+
+                                <form action="/login" method="get">
+
+                                    <button type="submit" class="btn btn-lg btn-pink w-100">
+
+                                        <i class="bi bi-unlock-fill me-2"></i>
+                                        Acesso ao Sistema
+
+                                    </button>
+
+                                </form>
+
+
+                                <form action="/usuarios/criar" method="get">
+
+                                    <button type="submit" class="btn btn-lg btn-green w-100">
+
+                                        <i class="bi bi-person-plus-fill me-2"></i>
+                                        Cadastre-se
+
+                                    </button>
+
+                                </form>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         RODAPÉ
+    ====================================================== -->
+
+    <footer class="bg-dark text-white py-4">
+
+        <div class="container">
+
+            <div class="row align-items-center g-3">
+
+                <div class="col-md-6 text-center text-md-start">
+
+                    <div class="fw-bold fs-5">
+                        <i class="bi bi-house-heart-fill me-2"></i>
+                        PetWeb
+                    </div>
+
+                    <small class="text-white-50">
+                        Gerenciamento completo para seus pets.
+                    </small>
+
+                </div>
+
+
+                <div class="col-md-6 text-center text-md-end">
+
+                    <small class="text-white-50">
+                        © 2026 PetWeb. Todos os direitos reservados.
+                    </small>
+
+                    <br>
+
+                    <a href="#" class="text-white text-decoration-none small">
+                        Política de Privacidade
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrVFcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
+
 </body>
+
 </html>
