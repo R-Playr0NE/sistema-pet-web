@@ -15,7 +15,9 @@ public class UsuarioService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public Usuario save(Usuario usuario) {
+    public Usuario salvarUsuario(Usuario usuario) {
+        // Define todo usuario cadastrado como usuario comun.
+        usuario.setRole("ROLE_USER");
         // Criptografa a senha antes de salvar
         usuario.setSenhaUsuario(passwordEncoder.encode(usuario.getSenhaUsuario()));
         return usuarioRepository.save(usuario);

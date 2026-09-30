@@ -21,9 +21,8 @@ public class UsuarioController {
 
     @PostMapping("/salvar")
     public String salvar(@ModelAttribute Usuario usuario) {
-        System.out.println("CHEGOU NO CONTROLLER");
-        usuarioService.save(usuario);
-        return "/login";
+        usuarioService.salvarUsuario(usuario);
+        return "redirect:/login";
     }
 
     @GetMapping("/criar")

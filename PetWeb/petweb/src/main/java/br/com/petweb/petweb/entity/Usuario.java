@@ -47,6 +47,7 @@ public class Usuario {
     @Transient
     private String confirmarSenha;
 
+    @Column(nullable = false)
     private String role = "ROLE_USER"; // Papel do usuario
 
 }
